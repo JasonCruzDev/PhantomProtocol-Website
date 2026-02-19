@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Protocol | SCUM Auto-Voter</title>
+    <style>
+        :root {
+            --bg-color: #0d0d12;
+            --surface: #1a1a24;
+            --primary: #00ff88;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER / HERO */
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+
+        .badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid var(--primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative; /* Unlocks manual positioning */
+            top: 25px; /* Moves ONLY the box down 30px */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 20px;
+            color: #fff;
+        }
+
+        h1 span {
+            color: var(--primary);
+        }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--surface);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+            border-top: 1px solid var(--surface);
+        }
+
+        .feature-card {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-card h3 {
+            color: #fff;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* PRICING */
+        .pricing {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .pricing-card {
+            background: var(--surface);
+            border: 2px solid var(--primary);
+            padding: 50px 30px;
+            border-radius: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .pricing-card .popular {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #000;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .pricing-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+        }
+
+        .pricing-list li strong {
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--surface);
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="container">
+        <div class="badge">V1 Prototype Live</div>
+        <h1>Phantom Protocol <span>(Pro)</span></h1>
+        <p class="subtitle">The ultimate "Set and Forget" SCUM Auto-Voter. Bypass Cloudflare, emulate human behavior, and
+            farm Discord Server Coins while you sleep.</p>
+        <a href="#pricing" class="btn">Get Access Now</a>
+        <a href="https://discord.gg/PBZADPJkZU" class="btn btn-outline">Join Discord</a>
+    </header>
+
+    <div class="container features">
+        <div class="feature-card">
+            <h3>🤖 100% Fully Automated</h3>
+            <p>Our language-agnostic engine reads the site's structural HTML. It detects cooldowns and votes the exact
+                second they expire.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🛡️ Anti-Detection Logic</h3>
+            <p>Uses random human jitter delays, variable sleep cycles, and realistic keystroke typing speeds to look
+                exactly like a real player.</p>
+        </div>
+        <div class="feature-card">
+            <h3>⚡ Glitch-Resistant</h3>
+            <p>If the voting site lags or a timer gets stuck at 00:00:00, the protocol forces a clean refresh to prevent
+                freezing and memory leaks.</p>
+        </div>
+    </div>
+
+    <div class="container pricing" id="pricing">
+        <h2>Dominate The Server Rankings</h2>
+
+        <div class="pricing-card">
+            <div class="popular">ANNUAL LICENSE</div>
+            <h3>Phantom Operative</h3>
+            <div class="price">$199<span>/year</span></div>
+            <p style="color: var(--text-muted);">Everything you need to automate your SCUM economy farming.</p>
+
+            <ul class="pricing-list">
+                <li>✔️ <strong>Unlimited</strong> automated voting</li>
+                <li>✔️ <strong>24/7</strong> Uptime & Memory Saver</li>
+                <li>✔️ <strong>Cloudflare</strong> Bypass Tech</li>
+                <li>✔️ <strong>Discord</strong> Webhook Notifications</li>
+                <li>✔️ <strong>Priority</strong> Tech Support</li>
+            </ul>
+
+            <button class="btn" style="width: 100%;">Purchase License</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 ScumWare. This tool is for educational and automation purposes. Use responsibly.
+    </footer>
+
+</body>
+
+</html>
