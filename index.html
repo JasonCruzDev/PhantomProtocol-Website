@@ -50,8 +50,8 @@
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: relative; /* Unlocks manual positioning */
-            top: 25px; /* Moves ONLY the box down 30px */
+            position: relative;
+            top: 25px;
         }
 
         h1 {
@@ -203,6 +203,71 @@
             border-top: 1px solid var(--surface);
             font-size: 14px;
         }
+
+        /* Pulsing Dot for Sensors */
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba(0, 255, 136, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+            }
+        }
+        /* --- MOBILE RESPONSIVE FIXES --- */
+        @media (max-width: 768px) {
+            /* Shrink the pricing section overall */
+            .pricing {
+                padding: 40px 10px;
+            }
+
+            /* Shrink the main heading */
+            .pricing h2 {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+
+            /* Squeeze the card padding and ensure it doesn't break the screen width */
+            .pricing-card {
+                padding: 30px 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Shrink the price text */
+            .price {
+                font-size: 2.8rem;
+            }
+
+            /* Adjust the top badge so it doesn't get cut off */
+            .pricing-card .popular {
+                font-size: 11px;
+                padding: 4px 15px;
+                top: -12px;
+            }
+
+            /* Shrink the main hero text at the very top of the page too */
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            p.subtitle {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -211,8 +276,8 @@
     <header class="container">
         <div class="badge">V1 Prototype Live</div>
         <h1>Phantom Protocol <span>(Pro)</span></h1>
-        <p class="subtitle">The ultimate "Set and Forget" SCUM Auto-Voter. Bypass Cloudflare, emulate human behavior, and
-            farm Discord Server Coins while you sleep.</p>
+        <p class="subtitle">The ultimate "Set and Forget" SCUM Auto-Voter. Bypass Cloudflare, emulate human behavior,
+            and farm Discord Server Coins while you sleep.</p>
         <a href="#pricing" class="btn">Get Access Now</a>
         <a href="https://discord.gg/PBZADPJkZU" class="btn btn-outline">Join Discord</a>
     </header>
@@ -234,6 +299,37 @@
                 freezing and memory leaks.</p>
         </div>
     </div>
+
+    <section
+        style="padding: 60px 20px; background: #0b0e14; border-top: 1px solid #1f2328; display: flex; justify-content: center;">
+        <div
+            style="max-width: 900px; width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; align-items: center;">
+
+            <div style="text-align: center; min-width: 200px;">
+                <h2
+                    style="color: #00ff88; font-size: 4rem; margin: 0; text-shadow: 0 0 20px rgba(0,255,136,0.6); font-family: 'Courier New', monospace;">
+                    142</h2>
+                <p
+                    style="text-transform: uppercase; letter-spacing: 2px; font-weight: 800; color: #fff; margin: 10px 0 5px 0;">
+                    Active Operatives</p>
+                <span style="font-size: 11px; color: #586069; font-family: monospace;">REV: 2/18/2026 - 20:03 CST</span>
+            </div>
+
+            <div
+                style="background: #000; padding: 25px; border-radius: 4px; border: 1px solid #00ff88; width: 350px; box-shadow: inset 0 0 10px rgba(0,255,136,0.1);">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                    <span class="pulse-dot"></span>
+                    <span style="color: #00ff88; font-size: 12px; font-weight: bold; letter-spacing: 1px;">SENSORS
+                        ACTIVE</span>
+                </div>
+                <p id="live-status"
+                    style="color: #00ff88; font-family: 'Courier New', monospace; font-size: 12px; margin: 0; line-height: 1.5;">
+                    > Initializing satellite handshake...
+                </p>
+            </div>
+
+        </div>
+    </section>
 
     <div class="container pricing" id="pricing">
         <h2>Dominate The Server Rankings</h2>
@@ -260,6 +356,72 @@
         &copy; 2026 ScumWare. This tool is for educational and automation purposes. Use responsibly.
     </footer>
 
+    <script>
+        const statusText = document.getElementById('live-status');
+        const GITHUB_USERNAME = "YOUR_GITHUB_NAME";
+        const REPO_NAME = "ScumWare-Phantom-Protocol";
+        const TOKEN = "your_github_token_here"; // Handle this securely later!
+
+        // The running history array (starts with 3 lines)
+        let terminalHistory = [
+            "> Initializing satellite handshake...",
+            "> Loading Phantom Engine v1.3...",
+            "> System ready."
+        ];
+
+        // Fake bot events to simulate high volume traffic
+        const botEvents = [
+            "> [BOT-142] Cloudflare bypassed in 3.2s.",
+            "> [BOT-089] Executing human-jitter typing...",
+            "> [SYSTEM] Discord payload delivered.",
+            "> [BOT-112] Vote submitted. Syncing cooldown.",
+            "> [NETWORK] Proxy rotated. Ghost mode active.",
+            "> [BOT-044] Cache purged. Awaiting wall.",
+            "> [SYSTEM] Monitoring local uplink..."
+        ];
+
+        // Renders the array into HTML breaks
+        function updateTerminal() {
+            statusText.innerHTML = terminalHistory.join('<br>');
+        }
+
+        // Pushes a new line to the array and keeps only the last 3
+        function addLog(message) {
+            terminalHistory.push(message);
+            if (terminalHistory.length > 3) {
+                terminalHistory.shift();
+            }
+            updateTerminal();
+        }
+
+        // 1. FAST STREAM: Add a random fake bot event every 3.5 seconds
+        setInterval(() => {
+            const randomEvent = botEvents[Math.floor(Math.random() * botEvents.length)];
+            addLog(randomEvent);
+        }, 3500);
+
+        // 2. UPLINK STREAM: Fetch real GitHub updates every 60 seconds
+        async function fetchLatestUpdate() {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits/main`, {
+                    headers: { 'Authorization': `token ${TOKEN}` }
+                });
+                if (!response.ok) return; // Silent fail if repo is private and token is missing
+
+                const data = await response.json();
+                const lastCommitDate = new Date(data.commit.author.date);
+                const timeStr = lastCommitDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const message = data.commit.message.substring(0, 30);
+
+                addLog(`> [UPLINK] SYNC: ${timeStr} | MSG: "${message}..."`);
+            } catch (err) {
+                // Ignore API limits/errors, the fast stream keeps it looking alive
+            }
+        }
+
+        setInterval(fetchLatestUpdate, 60000);
+        setTimeout(fetchLatestUpdate, 1000); // Check once after 1 second
+    </script>
 </body>
 
 </html>
